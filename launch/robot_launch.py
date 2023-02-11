@@ -4,7 +4,7 @@ import launch
 from launch_ros.actions import Node
 from ament_index_python.packages import get_package_share_directory
 from webots_ros2_driver.webots_launcher import WebotsLauncher
-from webots_ros2_driver.webots_launcher import Ros2SupervisorLauncher
+# from webots_ros2_driver.webots_launcher import Ros2SupervisorLauncher
 
 
 def generate_launch_description():
@@ -25,7 +25,7 @@ def generate_launch_description():
     # The Ros2Supervisor node is a special node interacting with the simulation.
     # For example, it publishes the /clock topic of the simulation or permits to spawn robot from URDF files.
     # By default, the respawn option is set to True.
-    ros2_supervisor = Ros2SupervisorLauncher()
+    # ros2_supervisor = Ros2SupervisorLauncher()
 
     # The node which interacts with a robot in the Webots simulation is located in the `webots_ros2_driver` package under name `driver`.
     # It is necessary to run such a node for each robot in the simulation.
@@ -61,7 +61,7 @@ def generate_launch_description():
         webots,
 
         # Start the Ros2Supervisor node
-        ros2_supervisor,
+        # ros2_supervisor,
 
         # Start the Webots robot driver
         webots_robot_driver,
