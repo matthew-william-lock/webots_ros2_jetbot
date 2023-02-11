@@ -12,7 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Driver for the Jetbot robot."""
+"""Driver for the Jetbot robot.
+
+Currently, this driver only supports the Jetbot robot with a camera.
+The robot will not move, but the camera will be enabled and the image data will be published to ROS2.
+"""
 
 import rclpy
 # from controller import Camera
