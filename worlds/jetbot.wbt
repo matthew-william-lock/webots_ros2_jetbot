@@ -255,7 +255,7 @@ Table {
 DEF JETBOT JetBot {
   translation -0.4 0 0.61
   rotation 0 0 1 1.5708
-  supervisor TRUE
+  controller "<extern>"
   cameraSlot JetBotRaspberryPiCamera {
     rotation 0 1 0 0.316799
     width 224

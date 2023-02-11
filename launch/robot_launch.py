@@ -10,7 +10,7 @@ from webots_ros2_driver.webots_launcher import WebotsLauncher
 def generate_launch_description():
     package_dir = get_package_share_directory('webots_ros2_jetbot')
     robot_description = pathlib.Path(os.path.join(package_dir, 'resource', 'webots_robot_description.urdf')).read_text()
-    ros2_control_params = os.path.join(package_dir, 'resource', 'ros2_control_configuration.yml')
+    # ros2_control_params = os.path.join(package_dir, 'resource', 'ros2_control_configuration.yml')
 
     # The WebotsLauncher is a Webots custom action that allows you to start a Webots simulation instance.
     # It searches for the Webots installation in the path specified by the `WEBOTS_HOME` environment variable and default installation paths.
@@ -31,16 +31,16 @@ def generate_launch_description():
     # It is necessary to run such a node for each robot in the simulation.
     # The `WEBOTS_CONTROLLER_URL` variable has to match the robot name in the world file.
     # Typically, we can provide it the `robot_description` parameters from a URDF file in order to configure the interface, `set_robot_state_publisher` in order to let the node give the URDF generated from Webots to the `robot_state_publisher` and `ros2_control_params` from the `ros2_control` configuration file.
-    webots_robot_driver = Node(
-        package='webots_ros2_driver',
-        executable='driver',
-        additional_env={'WEBOTS_CONTROLLER_URL': 'robot'},
-        parameters=[
-            {'robot_description': robot_description,
-             'set_robot_state_publisher': True},
-            ros2_control_params
-        ],
-    )
+    # webots_robot_driver = Node(
+    #     package='webots_ros2_driver',
+    #     executable='driver',
+    #     additional_env={'WEBOTS_CONTROLLER_URL': 'robot'},
+    #     parameters=[
+    #         {'robot_description': robot_description,
+    #          'set_robot_state_publisher': True},
+    #         ros2_control_params
+    #     ],
+    # )
 
     # Often we want to publish robot transforms, so we use the `robot_state_publisher` node for that.
     # If robot model is not specified in the URDF file then Webots can help us with the URDF exportation feature.
@@ -54,6 +54,15 @@ def generate_launch_description():
         }],
     )
 
+    jetbot_driver = Node(
+        package='webots_ros2_driver',
+        executable='driver',
+        output='screen',
+        parameters=[
+            {'robot_description': robot_description},
+        ]
+    )
+
     # Standard ROS 2 launch description
     return launch.LaunchDescription([
 
@@ -64,7 +73,10 @@ def generate_launch_description():
         # ros2_supervisor,
 
         # Start the Webots robot driver
-        webots_robot_driver,
+        # webots_robot_driver,
+
+        # jetbot_driver
+        jetbot_driver,
 
         # Start the robot_state_publisher
         robot_state_publisher,
