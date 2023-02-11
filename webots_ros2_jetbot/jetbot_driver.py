@@ -19,7 +19,6 @@ The robot will not move, but the camera will be enabled and the image data will 
 """
 
 import rclpy
-# from controller import Camera
 
 class JetbotDriver:
     def init(self, webots_node, properties):
