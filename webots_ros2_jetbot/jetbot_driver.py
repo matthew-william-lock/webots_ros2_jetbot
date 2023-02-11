@@ -29,21 +29,9 @@ class JetbotDriver:
 
         self.webots_node = webots_node
 
-        # self.left_motor = webots_node.robot.getDevice(properties['left_motor'])
-        # self.left_motor.setPosition(float('inf'))
-        # self.left_motor.setVelocity(0.0)
-
-        # self.right_motor = webots_node.robot.getDevice(properties['right_motor'])
-        # self.right_motor.setPosition(float('inf'))
-        # self.right_motor.setVelocity(0.0)
-
         # Sensors
         self.__camera = self.__robot.getDevice('camera')
         self.__camera.enable(self.__timestep)
-
-        # Enable camera
-        # self.__camera_sampling_period = 
-        # self.__camera.enable(self.__timestep)
 
         # ROS2 interface
         rclpy.init(args=None)
