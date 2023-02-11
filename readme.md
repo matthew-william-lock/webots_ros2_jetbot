@@ -2,6 +2,10 @@
 
 This package provides a ROS2 interface for the [JetBot](https://cyberbotics.com/doc/guide/jetbot) robot.
 
+The following topics are available:
+
+* ```/camera```: the camera image
+
 ## Getting Started
 
 ### Launching the Simulation
