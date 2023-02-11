@@ -16,6 +16,14 @@
             <accelerometerName>accelerometer</accelerometerName>
         </plugin> -->
 
+        <!-- Camera plugin -->
+        <!-- <plugin type="webots_ros2_driver::Ros2Camera">
+            <name>camera</name>
+            <topicName>camera</topicName>
+            <frameName>camera_link</frameName>
+            <updateRate>30</updateRate>
+        </plugin> -->
+
         <!-- The ros2_control implementation is provided as another out-of-the-box plugin. -->
         <plugin type="webots_ros2_jetbot.jetbot_driver.JetbotDriver" />
     </webots>
